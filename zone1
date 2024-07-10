@@ -1,0 +1,50 @@
+float myVariable, packCount, packStorage;
+
+// "when started" hat block
+int whenStarted1() {
+  Motor10.spinFor(reverse, 90.0, degrees, true);
+  Drivetrain.driveFor(forward, 25.0, inches, true);
+  packCount = 0.0;
+  if (Color5.detects(green)) {
+    Motor10.spinFor(forward, 90.0, degrees, true);
+    Motor9.spin(forward);
+    Motor10.spinFor(reverse, 90.0, degrees, true);
+    packCount = packCount + 1.0;
+    Drivetrain.driveFor(reverse, 30.0, inches, true);
+  }
+  else {
+    Drivetrain.driveFor(reverse, 5.0, inches, true);
+    Drivetrain.turnFor(right, 90.0, degrees, true);
+    Drivetrain.driveFor(forward, 18.0, inches, true);
+    Drivetrain.turnFor(left, 90.0, degrees, true);
+    Drivetrain.driveFor(forward, 5.0, inches, true);
+    if (Color5.detects(green)) {
+      Motor10.spinFor(forward, 90.0, degrees, true);
+      Motor9.spin(forward);
+      Motor10.spinFor(reverse, 90.0, degrees, true);
+      packCount = packCount + 1.0;
+      Drivetrain.driveFor(reverse, 30.0, inches, true);
+    }
+    else {
+      Drivetrain.driveFor(reverse, 5.0, inches, true);
+      Drivetrain.turnFor(right, 90.0, degrees, true);
+      Drivetrain.driveFor(forward, 18.0, inches, true);
+      Drivetrain.turnFor(left, 90.0, degrees, true);
+      Drivetrain.driveFor(forward, 5.0, inches, true);
+      Motor10.spinFor(forward, 90.0, degrees, true);
+      Motor9.spin(forward);
+      Motor10.spinFor(reverse, 90.0, degrees, true);
+      packCount = packCount + 1.0;
+      Drivetrain.driveFor(reverse, 30.0, inches, true);
+    }
+  }
+  return 0;
+}
+
+
+int main() {
+  // Calibrate the Drivetrain Gyro
+  calibrateDrivetrain();
+
+  whenStarted1();
+}
